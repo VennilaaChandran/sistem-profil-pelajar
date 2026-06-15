@@ -1,92 +1,117 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Profil Pelajar</title>
-
-<style>
+    <meta charset="UTF-8">
+    <title>Sistem Profil Pelajar</title>
+   <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body{
     min-height:100vh;
     background:linear-gradient(135deg,#8e74eb,#9face6);
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
+    padding-top:50px;
+}
+
+h1{
+    color:#fff;
+    font-size:32px;
+    margin-bottom:25px;
+    text-shadow:2px 2px 5px rgba(0,0,0,0.2);
 }
 
 .container{
-    width:450px;
-    background:white;
+    width:420px;
+    background:#fff;
     padding:30px;
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#333;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    animation:fadeIn 0.8s ease;
 }
 
 label{
     display:block;
-    margin-bottom:5px;
-    font-weight:bold;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
 }
 
 input,
 select{
     width:100%;
-    padding:10px;
+    padding:12px;
     margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:8px;
+    border:2px solid #e0e0e0;
+    border-radius:10px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+input:focus,
+select:focus{
+    border-color:#6c63ff;
+    outline:none;
+    box-shadow:0 0 8px rgba(108,99,255,0.3);
 }
 
 button{
     width:100%;
     padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#6c63ff;
+    background:linear-gradient(135deg,#6c63ff,#4d44db);
     color:white;
+    border:none;
+    border-radius:10px;
     font-size:16px;
+    font-weight:bold;
     cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{
-    background:#5548e5;
+    transform:translateY(-2px);
+    box-shadow:0 8px 15px rgba(108,99,255,0.3);
 }
 
 #output{
     margin-top:20px;
     padding:15px;
-    background:#f3f3f3;
-    border-radius:8px;
+    border-radius:10px;
+    background:#f5f7ff;
+    border-left:5px solid #6c63ff;
+    color:#333;
+    min-height:50px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 </style>
-
 </head>
+
 <body>
+
+<h2>Sistem Profil Pelajar</h2>
 
 <div class="container">
 
-    <h2>Sistem Profil Pelajar</h2>
-
-    <label>Nama Pelajar</label>
+    <label>Nama Pelajar:</label>
     <input type="text" id="nama">
 
-    <label>No Matrik</label>
-    <input type="text" id="matrik">
-
-    <label>Program</label>
+    <label>Program:</label>
     <select id="program">
         <option value="Multimedia">Multimedia</option>
         <option value="Rangkaian">Rangkaian</option>
@@ -94,34 +119,16 @@ button:hover{
         <option value="Perisian">Perisian</option>
     </select>
 
-    <label>E-mel</label>
+    <label>E-mel:</label>
     <input type="email" id="email">
 
-    <button id="papar" onclick="paparMaklumat()">
-        Papar Maklumat
-    </button>
+    <button onclick="paparMaklumat()">Papar Maklumat</button>
 
     <div id="output"></div>
 
 </div>
 
-<script>
-function paparMaklumat(){
-
-    let nama = document.getElementById("nama").value;
-    let matrik = document.getElementById("matrik").value;
-    let program = document.getElementById("program").value;
-    let email = document.getElementById("email").value;
-
-    document.getElementById("output").innerHTML = `
-        <h3>Maklumat Pelajar</h3>
-        <p>Nama: ${nama}</p>
-        <p>No Matrik: ${matrik}</p>
-        <p>Program: ${program}</p>
-        <p>Email: ${email}</p>
-    `;
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
