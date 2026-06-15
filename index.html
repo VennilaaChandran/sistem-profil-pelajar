@@ -104,12 +104,13 @@ button:hover{
 
 <body>
 
-<h2>Sistem Profil Pelajar</h2>
+<!-- Ditukar kepada h1 untuk padanan CSS -->
+<h1>Sistem Profil Pelajar</h1>
 
 <div class="container">
 
     <label>Nama Pelajar:</label>
-    <input type="text" id="nama">
+    <input type="text" id="nama" placeholder="Masukkan nama penuh">
 
     <label>Program:</label>
     <select id="program">
@@ -120,15 +121,38 @@ button:hover{
     </select>
 
     <label>E-mel:</label>
-    <input type="email" id="email">
+    <input type="email" id="email" placeholder="contoh@emel.com">
 
     <button onclick="paparMaklumat()">Papar Maklumat</button>
 
-    <div id="output"></div>
+    <div id="output">
+        Sila masukkan maklumat pelajar.
+    </div>
 
 </div>
 
-<script src="script.js"></script>
+<!-- Fungsi JavaScript dimasukkan terus ke dalam fail -->
+<script>
+    function paparMaklumat() {
+        const nama = document.getElementById("nama").value;
+        const program = document.getElementById("program").value;
+        const email = document.getElementById("email").value;
+        const outputDiv = document.getElementById("output");
+
+        // Semak jika ada ruangan yang kosong
+        if (nama === "" || email === "") {
+            outputDiv.innerHTML = '<span style="color:red;">Sila lengkapkan semua maklumat.</span>';
+            return;
+        }
+
+        // Paparkan output
+        outputDiv.innerHTML = `
+            <strong>Nama:</strong> ${nama} <br>
+            <strong>Program:</strong> ${program} <br>
+            <strong>E-mel:</strong> ${email}
+        `;
+    }
+</script>
 
 </body>
 </html>
